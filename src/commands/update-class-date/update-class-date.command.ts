@@ -98,7 +98,7 @@ const command: CommandModule<{}, CreateVideoArgs> = {
 				const { courseClass } = updateCourseClassResponse;
 
 				message = `Clase ${courseClass.courseClassList?.code ?? ""} ${courseClass.number ?? ""} editada.\n`;
-				message = `Fecha de publicación: ${courseClass.publishedAt ?? ""}`;
+				message += `Fecha de publicación: ${courseClass.publishedAt ?? ""}`;
 			}
 		}
 
