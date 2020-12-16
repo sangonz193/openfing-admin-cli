@@ -18,9 +18,11 @@ export const getRemoteSchema = async (): Promise<{
 	let fetchedFromRemote = true;
 
 	const remoteSchemaPath = path.resolve(generatedFolderPath, "remoteSchema.graphql.ts");
-	let remoteSchema: string | null = await loadSchema(graphqlEndpoint, { loaders: [new UrlLoader()] })
-		.then((schema) => printSchema(schema))
-		.catch(() => null);
+	let remoteSchema: string | null = graphqlEndpoint
+		? await loadSchema(graphqlEndpoint, { loaders: [new UrlLoader()] })
+				.then((schema) => printSchema(schema))
+				.catch(() => null)
+		: null;
 
 	if (!remoteSchema) {
 		console.log(chalk.yellow("Could not connect to server. Skipping remote schema update."));

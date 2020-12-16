@@ -1,12 +1,20 @@
-import yargs from "yargs";
+import path from "path";
+import { spawn } from "promisify-child-process";
 
-yargs
-	.scriptName("")
-	.commandDir("commands", {
-		visit: (commandModule) => commandModule.default,
-		extensions: ["ts"],
-	})
-	.locale("en_US")
-	.parserConfiguration({ "camel-case-expansion": false })
-	.showHelpOnFail(false)
-	.strict().argv;
+import { parseEnv } from "./_utils/parseEnv";
+import { projectPath } from "./_utils/projectPath";
+
+(async () => {
+	spawn(
+		path.resolve(projectPath, "node_modules", "node", "bin", "node"),
+		[
+			...["-r", path.resolve(projectPath, "cli", "_utils", "registerBabel.js")],
+			path.resolve(projectPath, "cli", "cli.ts"),
+			...process.argv.slice(2),
+		],
+		{
+			stdio: "inherit",
+			env: { ...process.env, ...(await parseEnv().catch(() => ({}))) },
+		}
+	).catch(() => null);
+})();
