@@ -9,5 +9,5 @@ import { getCommandsFromDir } from "./_utils/getCommandsFromDir";
 	const _yargs = yargs.scriptName("openfing");
 	nestedCommands.forEach((command) => _yargs.command(command));
 
-	_yargs.locale("en_US").parserConfiguration({ "camel-case-expansion": false }).showHelpOnFail(false).strict().argv;
+	_yargs.locale("es_UY").parserConfiguration({ "camel-case-expansion": false }).showHelpOnFail(false).strict().argv;
 })();
