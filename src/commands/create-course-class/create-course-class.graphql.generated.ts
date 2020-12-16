@@ -1,6 +1,6 @@
 import * as Types from '../../generated/localSchema.types';
 
-import * as Operations from './create-class.graphql';
+import * as Operations from './create-course-class.graphql';
 import * as Apollo from '@apollo/client';
 export type CreateCourseClassMutationVariables = Types.Exact<{
   input: Types.CreateCourseClassInput;

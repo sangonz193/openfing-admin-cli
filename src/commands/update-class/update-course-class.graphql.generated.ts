@@ -1,6 +1,6 @@
 import * as Types from '../../generated/localSchema.types';
 
-import * as Operations from './update-class-date.graphql';
+import * as Operations from './update-course-class.graphql';
 import * as Apollo from '@apollo/client';
 export type UpdateCourseClassMutationVariables = Types.Exact<{
   ref: Types.CourseClassRef;

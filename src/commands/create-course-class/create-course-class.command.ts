@@ -3,19 +3,21 @@ import * as yup from "yup";
 
 import { appConfig } from "../../appConfig";
 import { createGraphqlClient } from "../../createGraphqlClient";
-import { createCourseClass } from "./create-class.graphql";
-import { CreateCourseClassMutation, CreateCourseClassMutationVariables } from "./create-class.graphql.generated";
+import { createCourseClass } from "./create-course-class.graphql";
+import { CreateCourseClassMutation, CreateCourseClassMutationVariables } from "./create-course-class.graphql.generated";
 
-type CreateVideoArgs = {
+type CreateCourseClassArgs = {
 	courseClassListCode: string;
 	classNumber: number;
 	classTitle?: string;
 };
 
-const command: CommandModule<{}, CreateVideoArgs> = {
-	command: "create-class",
+const command: CommandModule<{}, CreateCourseClassArgs> = {
+	command: "create-course-class",
 
-	describe: "Crea un nuevo video.",
+	aliases: "create-cc",
+
+	describe: "Crea una nueva clase.",
 
 	builder: async (yargs) =>
 		yargs
@@ -40,7 +42,7 @@ const command: CommandModule<{}, CreateVideoArgs> = {
 
 	handler: async (args) => {
 		const validatedData = await yup
-			.object<CreateVideoArgs>({
+			.object<CreateCourseClassArgs>({
 				courseClassListCode: yup.string().trim().required(),
 				classNumber: yup.number().positive("Debe ser positivo").integer("Debe ser un numero entero").required(),
 				classTitle: yup.string().trim().notRequired(),
