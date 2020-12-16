@@ -51,7 +51,7 @@ const command: CommandModule<{}, {}> = {
 						stats = await sftp.lstat(toPath);
 					}
 
-					if (stats.isDirectory()) shouldCreateFolder = false;
+					if (stats?.isDirectory()) shouldCreateFolder = false;
 				}
 
 				if (shouldCreateFolder) await sftp.mkdir(toPath);
