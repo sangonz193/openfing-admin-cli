@@ -1,6 +1,6 @@
 {
   "name": "openfing-admin-cli",
-  "version": "1.0.2-alpha.0",
+  "version": "1.1.1",
   "description": "OpenFING admin cli, used to manage the OpenFING database",
   "scripts": {
     "build": "rm -rf dist && babel src --out-dir dist --copy-files --extensions '.ts,.js'"

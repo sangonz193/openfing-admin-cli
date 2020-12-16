@@ -15,7 +15,7 @@ type UpdateCourseClassArgs = {
 	newDate?: string;
 	newClassNumber?: number;
 	newName?: string;
-	newVisibility?: "hidden" | "public" | "disabled";
+	newVisibility?: "public" | "disabled";
 };
 
 const command: CommandModule<{}, UpdateCourseClassArgs> = {
@@ -59,7 +59,6 @@ const command: CommandModule<{}, UpdateCourseClassArgs> = {
 				description: "Nueva configuración de visibilidad para la clase a actualizar",
 				choices: dangerousKeysOf(
 					identity<Record<Required<UpdateCourseClassArgs>["newVisibility"], 0>>({
-						hidden: 0,
 						disabled: 0,
 						public: 0,
 					})
@@ -99,7 +98,6 @@ const command: CommandModule<{}, UpdateCourseClassArgs> = {
 			>({
 				public: "PUBLIC",
 				disabled: "DISABLED",
-				hidden: "HIDDEN",
 			})[validatedData.newVisibility];
 
 		const response = await client.mutate<UpdateCourseClassMutation, UpdateCourseClassMutationVariables>({

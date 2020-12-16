@@ -24,7 +24,7 @@ type CreateCourseClassListArgs = {
 const command: CommandModule<{}, CreateCourseClassListArgs> = {
 	command: "create-course-class-list",
 
-	aliases: ["create-ccl"],
+	aliases: "create-ccl",
 
 	describe: "Crea una lista de clases para un curso.",
 
